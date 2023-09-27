@@ -44,16 +44,16 @@ op = hc.option_bar(option_definition=option_data,key='PrimaryOption',override_th
 
 
 st.write("""
-# LTBI Prediction App using Logistic Regression
+# Malaysian LTBI Risk Checker for HCW
 
-The model uses real hospital data to determine likelihood of LTBI
+The logistic regression model uses real hospital data to determine likelihood of LTBI
 """)
 
 with st.expander("User input parameters"):
     def user_input_features():
         age = st.slider('AGE', 18, 85, 30)
         indexoptions = ["1","2","3"]
-        index=st.selectbox("INDEX",options=indexoptions)
+        index=st.selectbox("INDEX: HCW(1),screening(2),patient(3)",options=indexoptions)
         sexoptions = ["1","2"]
         sex=st.selectbox('SEX',options=sexoptions)
         postoptions=["1","2","3"]
@@ -62,7 +62,7 @@ with st.expander("User input parameters"):
         dept = st.selectbox('DEPT',options=deptoptions)
         testoptions=["1","2"]
         test = st.selectbox('TEST',options=testoptions)
-        data = {'INDEX': index,
+        data = {'INDEX: HCW(1),screening(2),patient(3)': index,
                 'SEX': sex,
                 'AGE': age,
                 'POST': post,
