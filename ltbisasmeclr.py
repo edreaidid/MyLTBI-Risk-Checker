@@ -109,7 +109,7 @@ st.write(f"model accuracy: {(round(modelacc,2))*100} %")
 st.subheader('Prediction Probability (%)')
 predproba=prediction_proba*100 
 dfpredproba = pd.DataFrame(predproba, columns=['N', 'Y']) 
-styler2 = dfpredproba.style.hide_index()
+styler2 = dfpredproba.style.hide()
 st.write(styler2.to_html(), unsafe_allow_html=True)
 
 #interpretation using explainable AI (XAI)
