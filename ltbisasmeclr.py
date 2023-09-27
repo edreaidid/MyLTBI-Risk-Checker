@@ -71,8 +71,6 @@ with st.expander("User input parameters"):
         features = pd.DataFrame(data, index=[0])
         return features
     z = user_input_features()
-    st.write("Footnote:")
-
 
 df = pd.read_csv('ltbi_ML_V5.csv')
 
