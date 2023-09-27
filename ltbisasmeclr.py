@@ -53,15 +53,15 @@ with st.expander("User input parameters"):
     def user_input_features():
         age = st.slider('AGE', 18, 85, 30)
         indexoptions = ["1","2","3"]
-        index=st.selectbox("INDEX: HCW(1),screening(2),patient(3)",options=indexoptions)
+        index=st.selectbox("INDEX CASE: HCW(1), Screening(2), Patient(3)",options=indexoptions)
         sexoptions = ["1","2"]
-        sex=st.selectbox('SEX',options=sexoptions)
+        sex=st.selectbox('SEX: Female(1), Male(2)',options=sexoptions)
         postoptions=["1","2","3"]
-        post = st.selectbox('POST',options=postoptions)
+        post = st.selectbox('POST: Others(1), SN(2), MO(3)',options=postoptions)
         deptoptions=["1","2"]
-        dept = st.selectbox('DEPT',options=deptoptions)
+        dept = st.selectbox('DEPARTMENT: High risk(1), Low risk (2)',options=deptoptions)
         testoptions=["1","2"]
-        test = st.selectbox('TEST',options=testoptions)
+        test = st.selectbox('TEST TYPE: IGRA (1), TST (2)',options=testoptions)
         data = {'INDEX': index,
                 'SEX': sex,
                 'AGE': age,
