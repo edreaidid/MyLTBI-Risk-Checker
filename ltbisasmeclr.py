@@ -59,7 +59,7 @@ with st.expander("User input parameters"):
         postoptions=["1","2","3"]
         post = st.selectbox('POST: Others(1), SN(2), MO(3)',options=postoptions)
         deptoptions=["1","2"]
-        dept = st.selectbox('DEPARTMENT: High risk(1), Low risk (2)',options=deptoptions)
+        dept = st.selectbox('DEPARTMENT: High risk(1), Low risk(2)',options=deptoptions)
         testoptions=["1","2"]
         test = st.selectbox('TEST TYPE: IGRA (1), TST (2)',options=testoptions)
         data = {'INDEX': index,
