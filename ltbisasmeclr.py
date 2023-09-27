@@ -74,7 +74,7 @@ with st.expander("User input parameters"):
     st.write("Footnote:")
 
 
-df = pd.read_csv('C:/Users/raef/Desktop/ltbi\ltbi calculator\ltbi_ML_V5.csv')
+df = pd.read_csv('ltbi_ML_V5.csv')
 
 X = df[["INDEX","SEX","AGE","POST","DEPT","TEST"]]
 Y= df["LTBI"]
