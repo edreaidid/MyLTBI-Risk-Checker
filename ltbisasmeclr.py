@@ -104,16 +104,16 @@ with st.expander("Full model"):
         st.write('Footnote : The right x axis signifies higher LTBI risk, left lower risk. Y axis is the factors')
 
 with st.expander("Significant model"):
-    def user_input_features():
+    def user_input_features2():
         indexoptions = ["1","2","3"]
         index=st.selectbox("INDEX CASE: HCW(1), Screening(2), Patient(3)",options=indexoptions)
         postoptions=["1","2","3"]
         post = st.selectbox('POST: Others(1), SN(2), MO(3)',options=postoptions)
         data = {'INDEX': index,
-                'POST': post,
+                'POST': post}
         features = pd.DataFrame(data, index=[0])
         return features
-    z = user_input_features()
+    z = user_input_features2()
     df = pd.read_csv('ltbi_ML_V5.csv')
     X = df[["INDEX","POST"]]
     Y= df["LTBI"]
