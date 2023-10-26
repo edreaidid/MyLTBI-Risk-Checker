@@ -49,7 +49,7 @@ st.write("""
 The logistic regression model uses real hospital data to determine likelihood of LTBI
 """)
 
-with st.expander("Full model (FM)"):
+with st.expander("Initial model (IM)"):
     def user_input_features():
         age = st.slider('AGE', 18, 85, 30)
         indexoptions = ["1","2","3"]
@@ -94,7 +94,7 @@ with st.expander("Full model (FM)"):
     styler2 = dfpredproba.style.hide()
     st.write(styler2.to_html(), unsafe_allow_html=True)
     st.write("")
-    shapgraphic=st.button("Generate feature importance chart for FM")
+    shapgraphic=st.button("Generate feature importance chart for IM")
     if shapgraphic:
         explainer = shap.LinearExplainer(model, X)
         shap_values = explainer.shap_values(X)
@@ -103,7 +103,7 @@ with st.expander("Full model (FM)"):
         st.set_option('deprecation.showPyplotGlobalUse', False)
         st.write('Footnote : The right x axis signifies higher LTBI risk, left lower risk. Y axis is the factors')
 
-with st.expander("Significant model (SM)"):
+with st.expander("Final model (FM)"):
     def user_input_features2():
         indexoptions2 = ["1","2","3"]
         index2=st.selectbox("INDEX CASE_SM: HCW(1), Screening(2), Patient(3)",options=indexoptions2)
@@ -137,7 +137,7 @@ with st.expander("Significant model (SM)"):
     styler2 = dfpredproba.style.hide()
     st.write(styler2.to_html(), unsafe_allow_html=True)
     st.write("")
-    shapgraphic2=st.button("Generate feature importance chart for SM")
+    shapgraphic2=st.button("Generate feature importance chart for FM")
     if shapgraphic2:
         explainer = shap.LinearExplainer(model, X)
         shap_values = explainer.shap_values(X)
