@@ -111,12 +111,12 @@ with st.expander("Significant model (SM)"):
         post2 = st.selectbox('POST_SM: Others(1), SN(2), MO(3)',options=postoptions2)
         data = {'INDEX2': index2,
                 'POST2': post2}
-        features = pd.DataFrame(data, index2=[0])
+        features = pd.DataFrame(data, index=[0])
         return features
-    o = user_input_features2()
-    df2 = pd.read_csv('ltbi_ML_V5.csv')
-    X = df2[["INDEX","POST"]]
-    Y= df2["LTBI"]
+    z = user_input_features()
+    df = pd.read_csv('ltbi_ML_V5.csv')
+    X = df[["INDEX","POST"]]
+    Y= df["LTBI"]
     from sklearn.model_selection import train_test_split
     from sklearn.metrics import accuracy_score
     x_train,x_test,y_train,y_test=train_test_split(X,Y,test_size=0.3,random_state=35)
@@ -124,9 +124,9 @@ with st.expander("Significant model (SM)"):
     model=clf.fit(X, Y)
     y_pred = model.predict(x_test)
     modelacc=accuracy_score(y_test, y_pred)
-    prediction = model.predict(o)
+    prediction = model.predict(z)
     dfpred = pd.DataFrame(prediction)
-    prediction_proba = clf.predict_proba(o)
+    prediction_proba = clf.predict_proba(z)
     ltbi = dfpred.replace([0, 1], ["N", "Y"])
     st.subheader('Prediction')
     st.info(f"Your predicted LTBI status : {ltbi}")
