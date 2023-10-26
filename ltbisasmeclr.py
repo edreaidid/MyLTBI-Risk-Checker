@@ -111,12 +111,12 @@ with st.expander("Significant model"):
         post2 = st.selectbox('POST: Others(1), SN(2), MO(3)',options=postoptions2)
         data = {'INDEX2': index2,
                 'POST2': post2}
-        features = pd.DataFrame(data, index=[0])
+        features = pd.DataFrame(data, index2=[0])
         return features
     o = user_input_features2()
-    df = pd.read_csv('ltbi_ML_V5.csv')
-    X = df[["INDEX","POST"]]
-    Y= df["LTBI"]
+    df2 = pd.read_csv('ltbi_ML_V5.csv')
+    X = df2[["INDEX","POST"]]
+    Y= df2["LTBI"]
     from sklearn.model_selection import train_test_split
     from sklearn.metrics import accuracy_score
     x_train,x_test,y_train,y_test=train_test_split(X,Y,test_size=0.3,random_state=35)
