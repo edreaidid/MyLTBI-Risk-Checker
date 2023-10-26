@@ -106,9 +106,9 @@ with st.expander("Initial model (IM)"):
 with st.expander("Final model (FM)"):
     def user_input_features2():
         indexoptions2 = ["1","2","3"]
-        index2=st.selectbox("INDEX CASE_SM: HCW(1), Screening(2), Patient(3)",options=indexoptions2)
+        index2=st.selectbox("INDEX CASE (FM): HCW(1), Screening(2), Patient(3)",options=indexoptions2)
         postoptions2=["1","2","3"]
-        post2 = st.selectbox('POST_SM: Others(1), SN(2), MO(3)',options=postoptions2)
+        post2 = st.selectbox('POST (FM): Others(1), SN(2), MO(3)',options=postoptions2)
         data = {'INDEX': index2,
                 'POST': post2}
         features = pd.DataFrame(data, index=[0])
