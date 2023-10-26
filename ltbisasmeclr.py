@@ -113,7 +113,7 @@ with st.expander("Significant model"):
                 'POST': post2}
         features = pd.DataFrame(data, index=[0])
         return features
-    z = user_input_features2()
+    o = user_input_features2()
     df = pd.read_csv('ltbi_ML_V5.csv')
     X = df[["INDEX","POST"]]
     Y= df["LTBI"]
