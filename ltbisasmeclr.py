@@ -49,7 +49,7 @@ st.write("""
 The logistic regression model uses real hospital data to determine likelihood of LTBI
 """)
 
-with st.expander("Full model"):
+with st.expander("Full model (FM)"):
     def user_input_features():
         age = st.slider('AGE', 18, 85, 30)
         indexoptions = ["1","2","3"]
@@ -103,12 +103,12 @@ with st.expander("Full model"):
         st.set_option('deprecation.showPyplotGlobalUse', False)
         st.write('Footnote : The right x axis signifies higher LTBI risk, left lower risk. Y axis is the factors')
 
-with st.expander("Significant model"):
+with st.expander("Significant model (SM)"):
     def user_input_features2():
         indexoptions2 = ["1","2","3"]
-        index2=st.selectbox("INDEX CASE: HCW(1), Screening(2), Patient(3)",options=indexoptions2)
+        index2=st.selectbox("INDEX CASE_SM: HCW(1), Screening(2), Patient(3)",options=indexoptions2)
         postoptions2=["1","2","3"]
-        post2 = st.selectbox('POST: Others(1), SN(2), MO(3)',options=postoptions2)
+        post2 = st.selectbox('POST_SM: Others(1), SN(2), MO(3)',options=postoptions2)
         data = {'INDEX2': index2,
                 'POST2': post2}
         features = pd.DataFrame(data, index2=[0])
