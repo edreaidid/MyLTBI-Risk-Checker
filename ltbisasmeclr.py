@@ -71,55 +71,40 @@ with st.expander("User input parameters"):
         features = pd.DataFrame(data, index=[0])
         return features
     z = user_input_features()
+    df = pd.read_csv('ltbi_ML_V5.csv')
+    X = df[["INDEX","SEX","AGE","POST","DEPT","TEST"]]
+    Y= df["LTBI"]
+    from sklearn.model_selection import train_test_split
+    from sklearn.metrics import accuracy_score
+    x_train,x_test,y_train,y_test=train_test_split(X,Y,test_size=0.3,random_state=35)
+    clf = LogisticRegression()
+    model=clf.fit(X, Y)
+    y_pred = model.predict(x_test)
+    modelacc=accuracy_score(y_test, y_pred)
+    prediction = model.predict(z)
+    dfpred = pd.DataFrame(prediction)
+    prediction_proba = clf.predict_proba(z)
+    ltbi = dfpred.replace([0, 1], ["N", "Y"])
+    st.subheader('Prediction')
+    st.info(f"Your predicted LTBI status : {ltbi}")
+    st.write(f"model accuracy: {(round(modelacc,2))*100} %")
+    st.subheader('Prediction Probability (%)')
+    predproba=prediction_proba*100 
+    dfpredproba = pd.DataFrame(predproba, columns=['N', 'Y']) 
+    styler2 = dfpredproba.style.hide()
+    st.write(styler2.to_html(), unsafe_allow_html=True)
+    st.write("")
+    shapgraphic=st.button("Generate feature importance chart")
+    if shapgraphic:
+        explainer = shap.LinearExplainer(model, X)
+        shap_values = explainer.shap_values(X)
+        xai=shap.summary_plot(shap_values, X)
+        st.pyplot(xai)
+        st.set_option('deprecation.showPyplotGlobalUse', False)
+        st.write('Footnote : The right x axis signifies higher LTBI risk, left lower risk. Y axis is the factors')
 
-df = pd.read_csv('ltbi_ML_V5.csv')
-
-X = df[["INDEX","SEX","AGE","POST","DEPT","TEST"]]
-Y= df["LTBI"]
-
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score
-
-x_train,x_test,y_train,y_test=train_test_split(X,Y,test_size=0.3,random_state=35)
-clf = LogisticRegression()
-model=clf.fit(X, Y)
-
-y_pred = model.predict(x_test)
-modelacc=accuracy_score(y_test, y_pred)
 
 
-#Now we set the web app to predict  using our trained model
 
-prediction = model.predict(z)
-dfpred = pd.DataFrame(prediction)
-prediction_proba = clf.predict_proba(z)
-
-
-ltbi = dfpred.replace([0, 1], ["N", "Y"])
-
-    
-#writing prediction result
-st.subheader('Prediction')
-st.info(f"Your predicted LTBI status : {ltbi}")
-st.write(f"model accuracy: {(round(modelacc,2))*100} %")
-   
-#writing prediction probability, the higher prediction will be chosen as above
-st.subheader('Prediction Probability (%)')
-predproba=prediction_proba*100 
-dfpredproba = pd.DataFrame(predproba, columns=['N', 'Y']) 
-styler2 = dfpredproba.style.hide()
-st.write(styler2.to_html(), unsafe_allow_html=True)
-
-#interpretation using explainable AI (XAI)
-st.write("")
-
-shapgraphic=st.button("Generate feature importance chart")
-if shapgraphic:
-    explainer = shap.LinearExplainer(model, X)
-    shap_values = explainer.shap_values(X)
-    xai=shap.summary_plot(shap_values, X)
-    st.pyplot(xai)
-    st.set_option('deprecation.showPyplotGlobalUse', False)
-    st.write('Footnote : The right x axis signifies higher LTBI risk, left lower risk. Y axis is the factors')
 
 st.text('©️ EA2023')
