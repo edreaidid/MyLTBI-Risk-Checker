@@ -51,8 +51,10 @@ The logistic regression model uses real hospital data to determine likelihood of
 
 with st.expander("User input parameters"):
     def user_input_features():
-        age = st.slider('AGE', 18, 85, 30)
-        indexoptions = ["1","2","3"]
+        agecheck = st.checkbox("age")
+        if agecheck:
+            age = st.slider('AGE', 18, 85, 30)
+            indexoptions = ["1","2","3"]
         index=st.selectbox("INDEX CASE: HCW(1), Screening(2), Patient(3)",options=indexoptions)
         sexoptions = ["1","2"]
         sex=st.selectbox('SEX: Female(1), Male(2)',options=sexoptions)
