@@ -137,8 +137,8 @@ with st.expander("Significant model (SM)"):
     styler2 = dfpredproba.style.hide()
     st.write(styler2.to_html(), unsafe_allow_html=True)
     st.write("")
-    shapgraphic=st.button("Generate feature importance chart")
-    if shapgraphic:
+    shapgraphic2=st.button("Generate feature importance chart")
+    if shapgraphic2:
         explainer = shap.LinearExplainer(model, X)
         shap_values = explainer.shap_values(X)
         xai=shap.summary_plot(shap_values, X)
