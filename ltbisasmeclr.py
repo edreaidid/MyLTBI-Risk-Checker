@@ -105,12 +105,12 @@ with st.expander("Full model"):
 
 with st.expander("Significant model"):
     def user_input_features2():
-        indexoptions = ["1","2","3"]
-        index=st.selectbox("INDEX CASE: HCW(1), Screening(2), Patient(3)",options=indexoptions)
-        postoptions=["1","2","3"]
-        post = st.selectbox('POST: Others(1), SN(2), MO(3)',options=postoptions)
-        data = {'INDEX': index,
-                'POST': post}
+        indexoptions2 = ["1","2","3"]
+        index2=st.selectbox("INDEX CASE: HCW(1), Screening(2), Patient(3)",options=indexoptions)
+        postoptions2=["1","2","3"]
+        post2 = st.selectbox('POST: Others(1), SN(2), MO(3)',options=postoptions)
+        data = {'INDEX': index2,
+                'POST': post2}
         features = pd.DataFrame(data, index=[0])
         return features
     z = user_input_features2()
