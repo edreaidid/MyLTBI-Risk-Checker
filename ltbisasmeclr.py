@@ -94,7 +94,7 @@ with st.expander("Full model (FM)"):
     styler2 = dfpredproba.style.hide()
     st.write(styler2.to_html(), unsafe_allow_html=True)
     st.write("")
-    shapgraphic=st.button("Generate feature importance chart")
+    shapgraphic=st.button("Generate feature importance chart for FM")
     if shapgraphic:
         explainer = shap.LinearExplainer(model, X)
         shap_values = explainer.shap_values(X)
@@ -137,7 +137,7 @@ with st.expander("Significant model (SM)"):
     styler2 = dfpredproba.style.hide()
     st.write(styler2.to_html(), unsafe_allow_html=True)
     st.write("")
-    shapgraphic2=st.button("Generate feature importance chart")
+    shapgraphic2=st.button("Generate feature importance chart for SM")
     if shapgraphic2:
         explainer = shap.LinearExplainer(model, X)
         shap_values = explainer.shap_values(X)
