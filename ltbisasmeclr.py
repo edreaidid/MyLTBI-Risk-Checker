@@ -9,6 +9,7 @@ import pandas as pd
 from sklearn.linear_model import LogisticRegression
 import streamlit as st
 import shap
+import numpy
 
 st.set_page_config(initial_sidebar_state="collapsed")
 st.markdown(
