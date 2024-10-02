@@ -4,3 +4,4 @@ hydralit_components
 scikit-learn
 shap
 streamlit-extras
+numpy==1.26.4
