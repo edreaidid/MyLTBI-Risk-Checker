@@ -24,7 +24,7 @@ st.markdown(
 )
 
 import hydralit_components as hc
-from streamlit_extras.switch_page_button import switch_page
+
 
 # define what option labels and icons to display
 option_data = [
