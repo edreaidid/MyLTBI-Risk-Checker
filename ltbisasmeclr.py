@@ -10,6 +10,7 @@ from sklearn.linear_model import LogisticRegression
 import streamlit as st
 import shap
 import numpy
+import matplotlib.pyplot as plt
 
 st.set_page_config(initial_sidebar_state="collapsed")
 st.markdown(
@@ -145,6 +146,15 @@ with st.expander("Final model (FM)"):
         xai=shap.summary_plot(shap_values, X)
         st.pyplot(xai)
         st.set_option('deprecation.showPyplotGlobalUse', False)
+        # Create a clean matplotlib figure context
+        fig, ax = plt.subplots()
+
+        # Pass the current axis to the SHAP summary plot (avoids background plotting bugs)
+        shap.summary_plot(shap_values, X, show=False)
+
+        # Render the plot in your Streamlit frontend UI
+        st.pyplot(plt.gcf())
+        plt.close()
         st.write('Footnote : The right x axis signifies higher LTBI risk, left lower risk. Y axis is the factors')
 
 
