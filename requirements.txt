@@ -5,3 +5,4 @@ scikit-learn
 shap
 streamlit-extras
 numpy==1.26.4
+matplotlib
