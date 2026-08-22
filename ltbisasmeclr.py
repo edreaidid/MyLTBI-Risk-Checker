@@ -143,9 +143,7 @@ with st.expander("Final model (FM)"):
     if shapgraphic2:
         explainer = shap.LinearExplainer(model, X)
         shap_values = explainer.shap_values(X)
-        xai=shap.summary_plot(shap_values, X)
-        st.pyplot(xai)
-        st.set_option('deprecation.showPyplotGlobalUse', False)
+        
         # Create a clean matplotlib figure context
         fig, ax = plt.subplots()
 
