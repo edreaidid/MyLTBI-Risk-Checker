@@ -100,9 +100,15 @@ with st.expander("Initial model (IM)"):
     if shapgraphic:
         explainer = shap.LinearExplainer(model, X)
         shap_values = explainer.shap_values(X)
-        xai=shap.summary_plot(shap_values, X)
-        st.pyplot(xai)
-        st.set_option('deprecation.showPyplotGlobalUse', False)
+        # Create a clean matplotlib figure context
+        fig, ax = plt.subplots()
+
+        # Pass the current axis to the SHAP summary plot (avoids background plotting bugs)
+        shap.summary_plot(shap_values, X, show=False)
+
+        # Render the plot in your Streamlit frontend UI
+        st.pyplot(plt.gcf())
+        plt.close()
         st.write('Footnote : The right x axis signifies higher LTBI risk, left lower risk. Y axis is the factors')
 
 with st.expander("Final model (FM)"):
